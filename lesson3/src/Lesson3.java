@@ -17,8 +17,7 @@ public class Lesson3 {
 
         int firstVariable = 2;
         int secondVariable = firstVariable + 3;
-        int thirdVariable = firstVariable;
-        thirdVariable += secondVariable;
+        int thirdVariable = firstVariable + secondVariable;
         System.out.println("Переменная 1 : " + firstVariable + "\nПеременная 2 : "
                 + secondVariable + "\nПеременная 3 : " + thirdVariable);
     }
@@ -54,7 +53,7 @@ public class Lesson3 {
         int[][] twoDimensionalArray = new int[8][5];
         for (int i = 0; i < twoDimensionalArray.length; i++) {
             for (int j = 0; j < twoDimensionalArray[i].length; j++) {
-                twoDimensionalArray[i][j] = (int) (Math.random() * 90) + 10;
+                twoDimensionalArray[i][j] = (int) (Math.random() * (99-10+1) + 10);
                 System.out.print(twoDimensionalArray[i][j] + " ");
             }
             System.out.println();
