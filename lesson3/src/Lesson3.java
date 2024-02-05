@@ -15,14 +15,12 @@ public class Lesson3 {
         а третья переменная равна сумме первых двух.
          */
 
-        int[] variable = new int[3];
-        variable[0] = 2;
-        variable[1] = variable[0] + 3;
-        variable[2] = variable[0] + variable[1];
-
-        for (int i = 0; i < variable.length; i++) {
-            System.out.println("Элемент массива " + (i + 1) + ": " + variable[i]);
-        }
+        int firstVariable = 2;
+        int secondVariable = firstVariable + 3;
+        int thirdVariable = firstVariable;
+        thirdVariable += secondVariable;
+        System.out.println("Переменная 1 : " + firstVariable + "\nПеременная 2 : "
+                + secondVariable + "\nПеременная 3 : " + thirdVariable);
     }
 
     static void task2() {
@@ -52,13 +50,11 @@ public class Lesson3 {
         Создать двумерный массив из 8 строк по 5 столбцов в каждой из случайных целых чисел из отрезка [10;99].
         Вывести массив на экран.
          */
+
         int[][] twoDimensionalArray = new int[8][5];
-        Random num = new Random();
         for (int i = 0; i < twoDimensionalArray.length; i++) {
-            for (int j = 0; j < 5; j++) {
-                twoDimensionalArray[i][j] = num.ints(10, 100)
-                        .findFirst()
-                        .getAsInt();
+            for (int j = 0; j < twoDimensionalArray[i].length; j++) {
+                twoDimensionalArray[i][j] = (int) (Math.random() * 90) + 10;
                 System.out.print(twoDimensionalArray[i][j] + " ");
             }
             System.out.println();
