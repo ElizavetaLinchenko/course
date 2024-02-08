@@ -20,16 +20,13 @@ public class Main {
 
         Student[] arrayStudents = {oneStudent, oneAspirant};
 
-        for (int i = 0; i < arrayStudents.length; i++) {
-            if (arrayStudents[i] instanceof Aspirant) {
-                System.out.println("Стипендия " + arrayStudents[i].firstName + " " + arrayStudents[i].lastName + " - "
-                        + arrayStudents[i].getScholarship() + "\nНаучная работа - " + ((Aspirant) arrayStudents[i]).scientificWork);
-            } else {
-                System.out.println("Стипендия " + arrayStudents[i].firstName + " " + arrayStudents[i].lastName + " - "
-                        + arrayStudents[i].getScholarship());
-            }
+        for (Student s : arrayStudents) {
+            System.out.println("Стипендия " + s.getFirstName() + " " + s.getLastName() + " " + "Группа " + s.getGroup()
+                    + " - " + s.getScholarship());
         }
     }
 }
+
+
 
 
