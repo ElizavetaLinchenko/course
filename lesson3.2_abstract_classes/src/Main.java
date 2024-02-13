@@ -14,15 +14,15 @@ public class Main {
      */
 
     public static void main(String[] args) {
-        List<Fruit> fruit = new ArrayList<>();
+        Fruit[] fruit = new Fruit[3];
 
         Apple apple = new Apple(1.5);
         Pear pear = new Pear(2);
         Apricot apricot = new Apricot(3.5);
 
-        fruit.add(apple);
-        fruit.add(pear);
-        fruit.add(apricot);
+        fruit[0] = apple;
+        fruit[1] = pear;
+        fruit[2] = apricot;
 
         double totalCost = 0;
 
