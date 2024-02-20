@@ -1,4 +1,4 @@
-package Human;
+package human;
 
 public class ShortPants implements Pants {
     public void putOn() {

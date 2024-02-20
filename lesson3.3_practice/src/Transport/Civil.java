@@ -1,4 +1,4 @@
-package Transport;
+package transport;
 
 public class Civil extends Air {
     private int numberOfPassengers;

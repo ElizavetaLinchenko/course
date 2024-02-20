@@ -1,4 +1,4 @@
-package Transport;
+package transport;
 
 public class Ground extends Transport {
     private int numberOfWheels;

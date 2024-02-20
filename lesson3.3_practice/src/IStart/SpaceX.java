@@ -1,4 +1,4 @@
-package IStart;
+package iStart;
 
 public class SpaceX implements IStart {
     int declaredPassengerCount;
@@ -8,12 +8,7 @@ public class SpaceX implements IStart {
     }
 
     public boolean preLaunchSystemCheck() {
-        int numberOfPassengers = 5;
-        if (declaredPassengerCount > numberOfPassengers) {
-            return false;
-        } else {
-            return true;
-        }
+        return declaredPassengerCount <= 5;
     }
 
     public void startingEngines() {

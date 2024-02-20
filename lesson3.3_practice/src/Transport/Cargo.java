@@ -1,4 +1,4 @@
-package Transport;
+package transport;
 
 public class Cargo extends Ground {
     private double liftingCapacity;

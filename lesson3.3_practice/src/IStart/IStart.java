@@ -1,4 +1,4 @@
-package IStart;
+package iStart;
 
 public interface IStart {
     boolean preLaunchSystemCheck();

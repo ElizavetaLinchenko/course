@@ -1,4 +1,4 @@
-package IStart;
+package iStart;
 
 public class Airship implements IStart {
     double maxWeight;
@@ -8,12 +8,7 @@ public class Airship implements IStart {
     }
 
     public boolean preLaunchSystemCheck() {
-        int decklaredWeight = 1000;
-        if (decklaredWeight > maxWeight) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(1000 > maxWeight);
     }
 
     public void startingEngines() {

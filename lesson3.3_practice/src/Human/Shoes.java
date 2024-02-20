@@ -1,4 +1,4 @@
-package Human;
+package human;
 
 public interface Shoes {
     void putOn();

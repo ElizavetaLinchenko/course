@@ -1,4 +1,4 @@
-package Transport;
+package transport;
 
 public class Air extends Transport {
     private double wingspan;

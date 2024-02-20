@@ -1,4 +1,4 @@
-package Transport;
+package transport;
 
 public class Military extends Air {
     private boolean ejectionSystem;

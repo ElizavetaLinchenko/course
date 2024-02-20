@@ -1,4 +1,4 @@
-package IStart;
+package iStart;
 
 import java.util.Random;
 
@@ -7,11 +7,7 @@ public class Shuttle implements IStart {
         Random random = new Random();
         int randomNumber = random.nextInt(11);
 
-        if (randomNumber > 3) {
-            return true;
-        } else {
-            return false;
-        }
+        return randomNumber > 3;
     }
 
     public void startingEngines() {

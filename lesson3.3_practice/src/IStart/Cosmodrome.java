@@ -1,4 +1,4 @@
-package IStart;
+package iStart;
 
 public class Cosmodrome {
     void launch(IStart iStart) {
