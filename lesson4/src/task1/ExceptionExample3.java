@@ -3,28 +3,30 @@ package task1;
 import java.util.Scanner;
 
 public class ExceptionExample3 {
-    public static UserCredentialsStatus validation(String login, String password, String confirmPassword) {
+    public static boolean validation(String login, String password, String confirmPassword) {
         try {
             if (login.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                System.out.println("Ошибка: Необходимо ввести верные значения для логина, пароля и подтверждение пароля");
-                return UserCredentialsStatus.ENTERED_BY_USER;
+                System.out.println(UserCredentialsStatus.ENTERED_BY_USER + " Необходимо ввести верные значения для логина, " +
+                        "пароля и подтверждение пароля");
+                return false;
             }
 
             if (login.length() >= 20) {
-                throw new WrongLoginException("Длина логина должна быть меньше 20 знаков");
+                throw new WrongLoginException(UserCredentialsStatus.INCORRECT + " Длина логина должна быть меньше 20 знаков");
             }
 
             if (password.length() >= 20 || !password.equals(confirmPassword)) {
-                throw new WrongPasswordException("Длина пароля должна быть меньше 20 знаков, пароли должны совпадать");
+                throw new WrongPasswordException(UserCredentialsStatus.INCORRECT + " Длина пароля должна быть меньше 20 " +
+                        "знаков, пароли должны совпадать");
             }
 
-            return UserCredentialsStatus.CORRECT;
+            return true;
         } catch (WrongLoginException e) {
             System.out.println("Ошибка: " + e.getMessage());
-            return UserCredentialsStatus.INCORRECT;
+            return false;
         } catch (WrongPasswordException e) {
             System.out.println("Ошибка: " + e.getMessage());
-            return UserCredentialsStatus.INCORRECT;
+            return false;
         } finally {
             System.out.println("Проверка данных завершена");
         }
@@ -42,8 +44,7 @@ public class ExceptionExample3 {
         System.out.print("Подтвердите пароль: ");
         String confirmPassword = scanner.nextLine();
 
-        UserCredentialsStatus status = validation(login, password, confirmPassword);
-        boolean isValid = status == UserCredentialsStatus.CORRECT;
+        boolean isValid = validation(login, password, confirmPassword);
         System.out.println("Статус: " + isValid);
     }
 }

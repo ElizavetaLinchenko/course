@@ -3,23 +3,25 @@ package task1;
 import java.util.Scanner;
 
 public class ExceptionExample1 {
-    public static UserCredentialsStatus validation(String login, String password, String confirmPassword) {
+    public static boolean validation(String login, String password, String confirmPassword) {
         try {
             if (login.length() >= 20) {
-                throw new WrongLoginException("Длина логина должна быть меньше 20 знаков");
+                throw new WrongLoginException(UserCredentialsStatus.ENTERED_BY_USER + " Необходимо ввести верные значения " +
+                        "для логина, пароля и подтверждение пароля");
             }
 
             if (password.length() >= 20 || !password.equals(confirmPassword)) {
-                throw new WrongPasswordException("Длина пароля должна быть меньше 20 знаков, пароли должны совпадать");
+                throw new WrongPasswordException(UserCredentialsStatus.INCORRECT + " Длина логина должна быть меньше 20 " +
+                        "знаков");
             }
 
-            return UserCredentialsStatus.CORRECT;
+            return true;
         } catch (WrongLoginException | WrongPasswordException e) {
             System.out.println("Ошибка: " + e.getMessage());
             if (e instanceof WrongLoginException) {
-                return UserCredentialsStatus.INCORRECT;
+                return false;
             } else {
-                return UserCredentialsStatus.ENTERED_BY_USER;
+                return true;
             }
         } finally {
             System.out.println("Проверка данных завершена");
@@ -38,8 +40,7 @@ public class ExceptionExample1 {
         System.out.print("Подтвердите пароль: ");
         String confirmPassword = scanner.nextLine();
 
-        UserCredentialsStatus status = validation(login, password, confirmPassword);
-        boolean isValid = status == UserCredentialsStatus.CORRECT;
+        boolean isValid = validation(login, password, confirmPassword);
         System.out.println("Статус: " + isValid);
     }
 }
