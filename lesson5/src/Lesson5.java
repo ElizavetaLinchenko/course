@@ -33,9 +33,9 @@ public class Lesson5 {
         HeavyBox box2 = new HeavyBox(10);
         HeavyBox box3 = new HeavyBox(15);
 
-        queue.add(box1);
-        queue.add(box2);
-        queue.add(box3);
+        queue.offer(box1);
+        queue.offer(box2);
+        queue.offer(box3);
 
         while (!queue.isEmpty()) {
             HeavyBox removedBox = queue.poll();
@@ -62,8 +62,7 @@ public class Lesson5 {
             System.out.println("Вес" + " " + box.getWeight() + " " + box.toString());
         }
 
-        HeavyBox box1 = boxes.get(0);
-        box1.setWeight(box1.getWeight() + 10);
+        boxes.get(0).setWeight(boxes.get(0).getWeight() + 10);
 
         int removingBox = boxes.size() - 2;
         boxes.remove(removingBox);
