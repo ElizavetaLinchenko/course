@@ -62,7 +62,7 @@ public class Lesson5 {
             System.out.println("Вес" + " " + box.getWeight() + " " + box.toString());
         }
 
-        boxes.get(0).setWeight(boxes.get(0).getWeight() + 10);
+        boxes.get(0).setWeight(10);
 
         int removingBox = boxes.size() - 2;
         boxes.remove(removingBox);
