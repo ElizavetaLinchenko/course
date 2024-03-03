@@ -30,12 +30,21 @@ public class Lesson6 {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        if (fileInput != null) {
+
+        try {
             byte[] buffer = new byte[fileInput.available()];
             fileInput.read(buffer, 0, fileInput.available());
             System.out.println("File:");
             for (int i = 0; i < buffer.length; i++) {
                 System.out.print((char) buffer[i]);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                fileInput.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }
@@ -55,7 +64,10 @@ public class Lesson6 {
 
         try {
             outputStream.write(array);
-            outputStream.writeTo(new FileOutputStream("src/task2.txt"));
+
+            FileOutputStream fileOutputStream = new FileOutputStream("src/task2.txt");
+            outputStream.writeTo(fileOutputStream);
+            fileOutputStream.close();
             outputStream.close();
 
             FileInputStream fileInputStream = new FileInputStream("src/task2.txt");
@@ -85,13 +97,23 @@ public class Lesson6 {
     serialVersionUID класса Employee равен -4364626656486808842
     В цикле forEach вывести все значения параметров каждого клиента.
      */
-        
-        List<Employee> employees = new ArrayList<>();
 
-        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileName))) {
+        List<Employee> employees = new ArrayList<>();
+        ObjectInputStream inputStream = null;
+
+        try {
+            inputStream = new ObjectInputStream(new FileInputStream(fileName));
             employees = (List<Employee>) inputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return employees;
     }
@@ -104,12 +126,22 @@ public class Lesson6 {
         employees.add(employee);
         employees.add(employee1);
 
-        try (ObjectOutputStream dataOutputStream = new ObjectOutputStream(new FileOutputStream("src/employee.dat"))) {
+        ObjectOutputStream dataOutputStream = null;
+
+        try {
+            dataOutputStream = new ObjectOutputStream(new FileOutputStream("src/employee.dat"));
             dataOutputStream.writeObject(employees);
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (dataOutputStream != null) {
+                try {
+                    dataOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-
         List<Employee> employees1 = deserialize("src/employee.dat");
 
         for (Employee empl : employees1) {
