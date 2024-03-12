@@ -6,9 +6,9 @@ public class UserThread implements Runnable {
     }
 
     public void run() {
-        client.clientId = 0;
-        for (int i = 0; i < 5; i++) {
-            synchronized (client) {
+        synchronized (client) {
+            client.clientId = 0;
+            for (int i = 0; i < 5; i++) {
                 System.out.println(String.format("current thread name %s have clientId %s", Thread.currentThread().
                         getName(), client.clientId));
                 client.clientId++;

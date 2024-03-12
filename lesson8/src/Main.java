@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Exchanger;
+
 public class Main {
     public static void main(String[] args) {
         task1();
@@ -15,15 +19,15 @@ public class Main {
         Потоки должны запускаться не хаотично, а строго по порядку. Сначала самый первый, потом второй и т.д
          */
 
-        User[] threads = new User[5];
-        for (int i = 0; i < threads.length; i++) {
-            threads[i] = new User(i);
-
+        List<User> threads = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            threads.add(new User(i));
         }
-        for (int i = 0; i < threads.length; i++) {
-            threads[i].start();
+
+        for (User thread : threads) {
+            thread.start();
             try {
-                threads[i].join();
+                thread.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -44,13 +48,9 @@ public class Main {
 
          */
 
-        DatabaseService databaseService = new DatabaseService("Client's data");
-        ClientService clientService = new ClientService("Database's data", databaseService);
-        Thread databaseThread = new Thread(databaseService);
-        Thread clientThread = new Thread(clientService);
-
-        databaseThread.start();
-        clientThread.start();
+        Exchanger<String> exchanger = new Exchanger<>();
+        new Thread(new ClientService(exchanger)).start();
+        new Thread(new DatabaseService(exchanger)).start();
     }
 
     public static void task3() {
