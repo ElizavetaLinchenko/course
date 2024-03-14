@@ -31,8 +31,8 @@ public class Main {
 
         products.stream()
                 .map(Product::getName)
-                .sorted(Comparator.reverseOrder())
                 .distinct()
+                .map(str -> new StringBuilder(str).reverse().toString())
                 .collect(Collectors.toList())
                 .forEach(product -> {
                     System.out.println(product);
@@ -61,7 +61,7 @@ public class Main {
         List<Product> productList = new ArrayList<>();
 
         for (int i = 0; i < 1000; i++) {
-            Product product = new Product("Product " + (i++));
+            Product product = new Product("Product " + i);
             productList.add(product);
         }
         if (!productList.isEmpty()) {
@@ -75,18 +75,18 @@ public class Main {
             List<Product> secondProductlist = new ArrayList<>();
 
             for (int i = 0; i < 1000; i++) {
-                Product product = new Product("Product " + (i++));
+                Product product = new Product("Product " + i);
                 secondProductlist.add(product);
             }
-            Stream<Product> stream1 = productList.stream().limit(777);
-            Stream<Product> stream2 = secondProductlist.stream().limit(777);
+            Stream<Product> stream1 = productList.stream();
+            Stream<Product> stream2 = secondProductlist.stream();
             Stream<Product> commonStream = Stream.concat(stream1, stream2);
             commonStream
                     .flatMap(stream -> (
                             Stream.of(
-                                    String.format("First stream %s", stream.getName()),
-                                    String.format("Second stream %s", stream.getName())
-                            )))
+                                            String.format("First stream %s", stream.getName()),
+                                            String.format("Second stream %s", stream.getName()))
+                                    .limit(777)))
                     .collect(Collectors.toList())
                     .forEach(product -> {
                         System.out.println(product);
