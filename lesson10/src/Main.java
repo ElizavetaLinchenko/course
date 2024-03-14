@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -30,9 +29,8 @@ public class Main {
         products.get(products.size() - 1).setName(products.get(0).getName());
 
         products.stream()
-                .map(Product::getName)
                 .distinct()
-                .map(str -> new StringBuilder(str).reverse().toString())
+                .map(str -> new StringBuilder(str.getName()).reverse().toString())
                 .collect(Collectors.toList())
                 .forEach(product -> {
                     System.out.println(product);
@@ -67,30 +65,24 @@ public class Main {
         if (!productList.isEmpty()) {
             if (productList.get(0) != null) {
                 Product firstProduct = productList.get(0);
-                if (productList.lastIndexOf(productList) != -1) {
-                    Product lastProduct = productList.get(productList.lastIndexOf(productList));
+                if (productList.get(productList.size() - 1) != null) {
+                    Product lastProduct = productList.get(productList.size() - 1);
                     lastProduct.setName(firstProduct.getName());
                 }
             }
-            List<Product> secondProductlist = new ArrayList<>();
+            List<Product> secondProductList = new ArrayList<>();
 
             for (int i = 0; i < 1000; i++) {
                 Product product = new Product("Product " + i);
-                secondProductlist.add(product);
+                secondProductList.add(product);
             }
-            Stream<Product> stream1 = productList.stream();
-            Stream<Product> stream2 = secondProductlist.stream();
-            Stream<Product> commonStream = Stream.concat(stream1, stream2);
-            commonStream
-                    .flatMap(stream -> (
-                            Stream.of(
-                                            String.format("First stream %s", stream.getName()),
-                                            String.format("Second stream %s", stream.getName()))
-                                    .limit(777)))
-                    .collect(Collectors.toList())
-                    .forEach(product -> {
-                        System.out.println(product);
-                    });
+            Stream<List<Product>> commonStream = Stream.concat(Stream.of(productList), Stream.of(secondProductList));
+            List<List<Product>> result = commonStream
+                    .flatMap(streamProduct -> (
+                            Stream.of(streamProduct.stream().limit(777).collect(Collectors.toList()))))
+
+                    .collect(Collectors.toList());
+            System.out.println(result);
         }
     }
 

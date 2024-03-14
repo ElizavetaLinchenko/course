@@ -13,4 +13,3 @@ public class Product {
         this.name = name;
     }
 }
-
