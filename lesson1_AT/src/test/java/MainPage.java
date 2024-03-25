@@ -7,7 +7,7 @@ public class MainPage {
         this.driver = driver;
     }
 
-    public void siteUrl() {
-        driver.get("https://ru.selenide.org/index.html");
+    public void navigateTo(String url) {
+        driver.get(url);
     }
 }

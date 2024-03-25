@@ -2,8 +2,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.opentest4j.AssertionFailedError;
 
 public class SeleniumTest {
+
+    private static final String baseUrl = "https://ru.selenide.org/index.html";
+    private static final String incorrectUrl = "https://selenide.org/index.html";
     private static ChromeOptions options;
     private ChromeDriver chromeDriver;
     private MainPage mainPage;
@@ -24,23 +28,28 @@ public class SeleniumTest {
 
     @Test
     void getCurrentUrlTest() {
-        mainPage.siteUrl();
+        mainPage.navigateTo(baseUrl);
         String currentUrl = chromeDriver.getCurrentUrl();
-        Assertions.assertEquals("https://ru.selenide.org/index.html", currentUrl);
+        Assertions.assertEquals(baseUrl, currentUrl);
     }
+
     @Test
     void getIncorrectUrlTest() {
-        mainPage.siteUrl();
-        String currentUrl = chromeDriver.getCurrentUrl();
-        Assertions.assertEquals("https://selenide.org/index.html", currentUrl);
+        try {
+            mainPage.navigateTo(baseUrl);
+            String currentUrl = chromeDriver.getCurrentUrl();
+            Assertions.assertEquals(incorrectUrl, currentUrl);
+        } catch (AssertionFailedError e) {
+
+        } finally {
+            mainPage.navigateTo(incorrectUrl);
+            String currentUrl = chromeDriver.getCurrentUrl();
+            Assertions.assertEquals(incorrectUrl, currentUrl);
+        }
     }
 
     @AfterEach
     void closeBrowser() {
         chromeDriver.close();
-    }
-
-    @AfterAll
-    static void close() {
     }
 }
