@@ -1,8 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.xml.sax.SAXException;
@@ -31,6 +28,11 @@ public class SitesTest {
     void openBrowser() {
         chromeDriver = new ChromeDriver(options);
         mainPage = new MainPage(chromeDriver);
+    }
+
+    @AfterEach
+    void closeBrowser() {
+        chromeDriver.close();
     }
 
     @Test

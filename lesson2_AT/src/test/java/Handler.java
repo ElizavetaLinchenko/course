@@ -16,7 +16,7 @@ public class Handler extends DefaultHandler {
     private static String room = "";
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) {
+    public void startElement(String url, String localName, String qName, Attributes attributes) {
         if (qName.equals("office")) {
             room = attributes.getValue("room");
         }
