@@ -42,7 +42,7 @@ public class TestClass {
     }
 
     @Test
-    void firstTest() {
+    void testingCredentialFields() {
         driver.get(url);
 
         WebElement fieldLogin = driver.findElement(By.xpath("//input[@id='login']"));
@@ -56,7 +56,7 @@ public class TestClass {
     }
 
     @Test
-    void secondTest() {
+    void testingDocumentsElements() {
         driver.get(url);
 
         String pageTitle = driver.getTitle();
@@ -83,7 +83,7 @@ public class TestClass {
     }
 
     @Test
-    void thirdTest() {
+    void testingFieldsAndDate() {
         driver.get(url);
 
         WebElement passwordField = driver.findElement(By.xpath("//input[@id='password']"));
