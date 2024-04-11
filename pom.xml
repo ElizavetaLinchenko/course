@@ -27,6 +27,7 @@
         <module>lesson1_AT</module>
         <module>lesson2_AT</module>
         <module>lesson3_AT</module>
+        <module>lesson4_AT</module>
     </modules>
 
     <properties>
