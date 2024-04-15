@@ -16,22 +16,20 @@ public class Tests {
     private static ChromeOptions options;
     private WebDriver driver;
 
-    public WebDriver getDriver() {
-        return driver;
-    }
 
     private String urlDevTools = "https://www.jetbrains.com/";
     private By devToolsBtn = By.xpath("//button[@aria-label=\"Developer Tools: Open submenu\" and @data-test=\"main-menu-item-action\"]");
-    private By ideThemesBtn = By.xpath("//div[@class='main-submenu__column _mainSubmenu__column_eeio7 _mainSubmenu__column--inline_cukh2']//a[contains(., 'IDE Themes')]");
+    private By ideThemesBtn = By.xpath("//div[contains(@class, 'main-submenu__column') and contains(@class, '_mainSubmenu')]//a[contains(., 'IDE Themes')]");
     private By searchField = By.xpath("//input[@placeholder='Search']");
     private By draculaThemes = By.xpath("//span[contains(text(), 'Zihan Ma')]");
-    private By rating = By.xpath("//main[@id=\"mp-layout-content\"]//span[@class='_starWrapper_es1l10_12 _sizeS_es1l10_83 _classic_es1l10_141 _themeDark_es1l10_145']");
+    private By rating = By.xpath("//main[contains(@id, \"mp-layout-content\")]//span[contains(@class, '_starWrapper') and contains(@class, '_themeDark')]");
     private By mpsBtn = By.xpath("//div[contains(@class, 'main-submenu__column') and h5[@data-test='main-submenu-column-title' and text()='LANGUAGES & FRAMEWORKS']]//a[contains(@href, '/mps/')]");
     private By watchVideo = By.xpath("//div[@id=\"mps-overview-page\"]/section//div/button[contains(text(), 'Watch Video')]");
     private By iFrameLocator = By.xpath("//iframe[contains(@class, 'wt-youtube-player__player')]");
-    private By videoTitleLocator = By.xpath("//a[contains(@class, 'ytp-title-link') and @href='https://www.youtube.com/watch?v=eEUMAx3g6do']");
-    private By scalaBtn = By.xpath("//div[contains(@class, 'main-submenu__column') and contains(@class, '_mainSubmenu__column--inline_cukh2')]//h5[contains(text(), 'PLUGINS & SERVICES')]/following-sibling::div//a[contains(@href, 'scala')]");
-    private By imgLocator = By.xpath("//img[@src=\"/files/1347/521708/icon/pluginIcon.svg\"]");
+    private By videoTitleLocator = By.xpath("//a[contains(@class, 'ytp-title-link') and contains(@href, 'https://www.youtube.com/watch?v')]");
+    private By scalaBtn = By.xpath("//div[contains(@class, 'main-submenu') and contains(@class, '_mainSubmenu')]//h5[contains(text(), 'PLUGINS & SERVICES')]/following-sibling::div//a[contains(@href, 'scala')]");
+    private By imgLocator = By.xpath("//img[contains(@src, \"pluginIcon.svg\")]");
+
 
     @BeforeAll
     static void downloadDriver() {
