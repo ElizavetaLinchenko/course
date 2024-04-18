@@ -8,5 +8,25 @@
     </parent>
 
     <artifactId>lesson6_AT</artifactId>
-
+    <properties>
+        <cucumber.version>7.11.1</cucumber.version>
+    </properties>
+    <dependencies>
+    <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-junit-platform-engine</artifactId>
+        <version>${cucumber.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-java</artifactId>
+        <version>${cucumber.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.platform</groupId>
+        <artifactId>junit-platform-suite</artifactId>
+        <version>1.9.2</version>
+        <scope>test</scope>
+    </dependency>
+    </dependencies>
 </project>

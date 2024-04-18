@@ -8,5 +8,6 @@ public class JunitDataProviderColors {
     @EnumSource(value = Colors.class, names = {"RED", "WHITE"})
     void checkColors(Colors colors) {
         Assertions.assertNotNull(colors);
+        Assertions.assertFalse(colors.toString().isEmpty());
     }
 }
