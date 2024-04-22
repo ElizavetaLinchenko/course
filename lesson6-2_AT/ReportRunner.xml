@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="User registration">
+    <test name="Regression tests">
+        <classes>
+            <class name="step.TestClass"/>
+            <class name="step.TestNgTests"/>
+        </classes>
+    </test>
+</suite>
