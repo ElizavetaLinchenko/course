@@ -44,9 +44,15 @@ public class TestClass extends BaseTest {
         driver.findElement(intellijIdeaBtn).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement banner = wait.until(ExpectedConditions.presenceOfElementLocated(cookieBanner));
-        Assertions.assertNotNull(banner);
         String text = banner.getText();
-        Assertions.assertFalse(text.isEmpty());
+        Assertions.assertEquals("Our website uses some cookies and records your IP address for the purposes of " +
+                "accessibility, security, and managing your access to the telecommunication network. You can disable data " +
+                "collection and cookies by changing your browser settings, but it may affect how this website functions. " +
+                "Learn more.\n" +
+                "With your consent, JetBrains may also use cookies and your IP address to collect individual statistics " +
+                "and provide you with personalized offers and ads subject to the Privacy Policy and the Terms of Use. " +
+                "JetBrains may use third-party services for this purpose. You can adjust or withdraw your consent at any " +
+                "time by visiting the Opt-Out page.", text);
     }
 
     @Test
@@ -70,7 +76,8 @@ public class TestClass extends BaseTest {
         driver.findElement(documentationBtn).click();
         driver.findElement(overviewPanel).click();
         driver.findElement(userInterface).click();
-        WebElement imageElement = driver.findElement(imgLocator);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebElement imageElement = wait.until(ExpectedConditions.visibilityOf(driver.findElement(imgLocator)));
         long realWidth = (Long) ((JavascriptExecutor) driver).executeScript("return arguments[0].naturalWidth", imageElement);
         long realHeight = (Long) ((JavascriptExecutor) driver).executeScript("return arguments[0].naturalHeight", imageElement);
         Assert.assertEquals(3008, realWidth);

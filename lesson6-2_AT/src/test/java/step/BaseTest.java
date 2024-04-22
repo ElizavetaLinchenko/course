@@ -23,6 +23,7 @@ public class BaseTest {
     @BeforeMethod
     public void openBrowser() {
         driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
     }
 
     @AfterMethod
