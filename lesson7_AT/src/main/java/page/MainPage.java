@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainPage {
     private WebDriver driver;
@@ -36,11 +38,13 @@ public class MainPage {
         return new EventPage(driver);
     }
 
-    public void testingImg() {
+    public List<String> testingImgExtension() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        WebElement imgs = wait.until(ExpectedConditions.presenceOfElementLocated(imgLocator));
-        driver.findElement(imgLocator).getAttribute("src");
-        String imgLink = imgs.getAttribute("src");
-        Assertions.assertTrue(imgLink.endsWith(".svg"));
+        List<WebElement> imgs = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(imgLocator));
+        List<String> srcList = new ArrayList<>();
+        for (WebElement img : imgs) {
+            srcList.add(img.getAttribute("src"));
+        }
+        return srcList;
     }
 }

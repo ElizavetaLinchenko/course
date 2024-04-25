@@ -1,16 +1,19 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebElement;
 import page.MainPage;
 
 public class PlayBtnTest extends BaseTest {
 
     @Test
     void checkIfPauseBtnVisible() {
-        new MainPage(getDriver())
+        WebElement pauseButton = new MainPage(getDriver())
                 .navigateTo("https://about.gitlab.com/")
                 .clickResourcesBtn()
                 .clickQuickStartGuidesBtn()
                 .clickWatchDemoBtn()
                 .clickPlayBtn()
-                .checkVisabilityOfPauseBtn();
+                .findPauseBtn();
+        Assertions.assertTrue(pauseButton.isDisplayed());
     }
 }

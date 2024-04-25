@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import page.MainPage;
 
 public class TextTest extends BaseTest {
+
     @Test
     void checkIfTextVisible() {
         String getFreeTrialText = new MainPage(getDriver())
