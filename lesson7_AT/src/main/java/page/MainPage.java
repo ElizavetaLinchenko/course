@@ -1,7 +1,5 @@
 package page;
 
-import events.EventPage;
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,7 +36,7 @@ public class MainPage {
         return new EventPage(driver);
     }
 
-    public List<String> testingImgExtension() {
+    public List<String> getImages() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         List<WebElement> imgs = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(imgLocator));
         List<String> srcList = new ArrayList<>();

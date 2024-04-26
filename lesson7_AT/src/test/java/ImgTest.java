@@ -10,8 +10,9 @@ public class ImgTest extends BaseTest {
     void checkImgExtension() {
         List<String> srcList = new MainPage(getDriver())
                 .navigateTo("https://about.gitlab.com/")
-                .testingImgExtension();
+                .getImages();
         for (String src : srcList) {
+            Assertions.assertEquals(3, srcList.size());
             Assertions.assertTrue(src.endsWith("svg"));
         }
     }
