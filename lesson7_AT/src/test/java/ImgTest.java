@@ -11,8 +11,8 @@ public class ImgTest extends BaseTest {
         List<String> srcList = new MainPage(getDriver())
                 .navigateTo("https://about.gitlab.com/")
                 .getImages();
+        Assertions.assertEquals(3, srcList.size());
         for (String src : srcList) {
-            Assertions.assertEquals(3, srcList.size());
             Assertions.assertTrue(src.endsWith("svg"));
         }
     }
