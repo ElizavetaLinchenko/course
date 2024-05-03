@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import page.MainPage;
 
 public class VisibilityOfBtnTest extends BaseTest {
+
     @Test
     void checkIfDaleeBtnVisible() {
         WebElement daleeButton = new MainPage(getDriver())
@@ -11,7 +12,7 @@ public class VisibilityOfBtnTest extends BaseTest {
                 .clickKursyValutBtn()
                 .clickZabronirovatKursBtn()
                 .setYMenyaEstField()
-                .hoverDalee();
+                .daleeBtn();
         Assertions.assertTrue(daleeButton.isDisplayed());
     }
 }

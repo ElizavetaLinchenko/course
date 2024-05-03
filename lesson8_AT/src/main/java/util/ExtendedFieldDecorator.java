@@ -57,10 +57,9 @@ public class ExtendedFieldDecorator extends DefaultFieldDecorator {
 
     private <E extends Element> Class<? extends E> findImplementationFor(final Class<E> elementClass) {
         try {
-            return (Class<? extends E>) Class.forName(String.format("%s.impl.%sImpl", elementClass.getPackage().getName(), elementClass.getSimpleName()));
+            return (Class<? extends E>) Class.forName(String.format("%s.%sImpl", elementClass.getPackage().getName(), elementClass.getSimpleName()));
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
-
 }

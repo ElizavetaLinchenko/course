@@ -1,12 +1,16 @@
 package page;
 
+import custom.Button;
+import custom.ButtonImpl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import util.ExtendedFieldDecorator;
 
 import java.time.Duration;
 
@@ -19,6 +23,7 @@ public class ZabronirovatKursPage {
     private WebElement dalee;
 
     public ZabronirovatKursPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
@@ -28,7 +33,7 @@ public class ZabronirovatKursPage {
         return new ZabronirovatKursPage(driver);
     }
 
-    public WebElement hoverDalee() {
+    public WebElement daleeBtn() {
         Actions actions = new Actions(driver);
         actions.moveToElement(dalee).perform();
         return dalee;
