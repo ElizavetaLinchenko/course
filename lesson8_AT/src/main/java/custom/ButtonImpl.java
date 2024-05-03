@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 
 public class ButtonImpl extends AbstractElement implements Button {
 
-    protected ButtonImpl(final WebElement wrapperElement) {
+    public ButtonImpl(final WebElement wrapperElement) {
         super(wrapperElement);
     }
 

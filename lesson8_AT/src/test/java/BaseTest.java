@@ -14,7 +14,8 @@ public class BaseTest {
     static void downloadDriver() {
         WebDriverManager.chromedriver().clearDriverCache().setup();
         options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--headless=new");
+        //options.addArguments("--remote-allow-origins=*");
     }
 
     public WebDriver getDriver() {

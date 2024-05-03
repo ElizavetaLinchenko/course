@@ -1,3 +1,4 @@
+import custom.Button;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
@@ -7,7 +8,7 @@ public class VisibilityOfBtnTest extends BaseTest {
 
     @Test
     void checkIfDaleeBtnVisible() {
-        WebElement daleeButton = new MainPage(getDriver())
+        Button daleeButton = new MainPage(getDriver())
                 .navigateTo("https://myfin.by/")
                 .clickKursyValutBtn()
                 .clickZabronirovatKursBtn()

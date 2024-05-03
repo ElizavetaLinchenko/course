@@ -9,12 +9,9 @@ import java.time.Duration;
 
 public class MainPage {
     private WebDriver driver;
-    private By kursyValut = By.xpath("//a[contains(@class, \"main-nav_link\") and contains(@href, \"campaign=menu\") and normalize-space()=\"Курсы валют\"]");
-    private By converter = By.xpath("//a[contains(@href, \"campaign=currency_button\") and contains(normalize-space(), \"Конвертер\")]");
-    private By cookie = By.xpath("//button[contains(@class, \"btn\") and contains(@class, \"btn-big\") and contains(@class, \"btn-default\") and normalize-space()=\"Принять\"]");
-    private By vkladyBtn = By.xpath("//a[contains(@class, \"main-nav_link\") and contains(@href, \"/vklady\") and contains(normalize-space(), \"Вклады\")]");
-
-    private By zabronirovatKurs = By.xpath("//a[contains(@class, \"btn\") and contains(@class, \"btn-primary\") and contains(@href, \"zabronirovat-kurs\") and normalize-space()=\"Забронировать курс\"]");
+    private By kursyValut = By.xpath("//a[contains(@data-bubble, \"currency\") and contains(@href, \"/currency/minsk\")]");
+    private By cookie = By.xpath("//button[contains(@class, \"btn\") and normalize-space()=\"Принять\"]");
+    private By vkladyBtn = By.xpath("//a[contains(@class, \"main-nav_link\") and contains(@href, \"/vklady\")]");
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -25,8 +22,11 @@ public class MainPage {
         return this;
     }
 
-    public MainPage clickKursyValutBtn() {
-        driver.findElement(cookie).click();
+    public ZabronirovatKursPage clickKursyValutBtn() {
+        WebElement cookieElement = driver.findElement(cookie);
+        if (cookieElement.isDisplayed()) {
+            cookieElement.click();
+        }
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         int maxAttempts = 3;
@@ -47,28 +47,19 @@ public class MainPage {
             }
         }
 
-        return new MainPage(driver);
-    }
-
-    public CurrencyPage clickConverterBtn() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement converterButton = wait.until(ExpectedConditions.elementToBeClickable(converter));
-        converterButton.click();
-        return new CurrencyPage(driver);
+        return new ZabronirovatKursPage(driver);
     }
 
     public KolebaniyaStavokPage clickVkladyBtn() {
-        driver.findElement(cookie).click();
+        WebElement cookieElement = driver.findElement(cookie);
+        if (cookieElement.isDisplayed()) {
+            cookieElement.click();
+        }
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement vkladyButton = wait.until(ExpectedConditions.elementToBeClickable(vkladyBtn));
 
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", vkladyButton);
         return new KolebaniyaStavokPage(driver);
-    }
-
-    public ZabronirovatKursPage clickZabronirovatKursBtn() {
-        driver.findElement(zabronirovatKurs).click();
-        return new ZabronirovatKursPage(driver);
     }
 }
