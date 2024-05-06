@@ -12,7 +12,7 @@ public class VisibilityOfBtnTest extends BaseTest {
                 .navigateTo("https://myfin.by/")
                 .clickKursyValutBtn()
                 .clickZabronirovatKursBtn()
-                .setYMenyaEstField()
+                .setYMenyaEstField("200")
                 .daleeBtn();
         Assertions.assertTrue(daleeButton.isDisplayed());
     }

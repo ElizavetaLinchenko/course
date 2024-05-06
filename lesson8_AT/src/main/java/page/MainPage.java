@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
 public class MainPage {
     private WebDriver driver;
     private By kursyValut = By.xpath("//a[contains(@data-bubble, \"currency\") and contains(@href, \"/currency/minsk\")]");
@@ -22,7 +21,7 @@ public class MainPage {
         return this;
     }
 
-    public ZabronirovatKursPage clickKursyValutBtn() {
+    public KursyValutPage clickKursyValutBtn() {
         WebElement cookieElement = driver.findElement(cookie);
         if (cookieElement.isDisplayed()) {
             cookieElement.click();
@@ -47,7 +46,7 @@ public class MainPage {
             }
         }
 
-        return new ZabronirovatKursPage(driver);
+        return new KursyValutPage(driver);
     }
 
     public KolebaniyaStavokPage clickVkladyBtn() {
