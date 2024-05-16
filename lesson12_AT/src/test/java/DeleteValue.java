@@ -15,7 +15,7 @@ public class DeleteValue {
 
         try {
             String query = "DELETE [Stormnet].[dbo].[variant5task1] WHERE username = 'Ivan'";
-            statement.executeQuery(query);
+            statement.executeUpdate(query);
 
         } finally {
             statement.close();
