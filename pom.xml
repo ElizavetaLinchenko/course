@@ -34,6 +34,10 @@
         <module>lesson7_AT</module>
         <module>page_object_practice</module>
         <module>lesson8_AT</module>
+        <module>lesson8-2_AT</module>
+        <module>lesson9_AT</module>
+        <module>lesson11_AT</module>
+        <module>lesson12_AT</module>
     </modules>
 
     <properties>
@@ -51,7 +55,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.8.1</version>
+            <version>4.13.0</version>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
