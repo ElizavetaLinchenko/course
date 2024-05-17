@@ -1,4 +1,4 @@
-package constants;
+package utils;
 
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;

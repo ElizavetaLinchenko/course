@@ -1,5 +1,4 @@
 import constants.Endpoint;
-import constants.Logger;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import model.Pet;
@@ -7,6 +6,7 @@ import model.PetResponse;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import utils.Logger;
 
 public class AddPetApiTest extends Logger {
 

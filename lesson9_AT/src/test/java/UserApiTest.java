@@ -1,4 +1,3 @@
-import constants.Logger;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -7,6 +6,7 @@ import model.UserResponse;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import utils.Logger;
 
 import java.util.List;
 import java.util.stream.Collectors;

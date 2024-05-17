@@ -1,8 +1,8 @@
-import constants.Logger;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import utils.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,8 +29,7 @@ public class LoginApiTest extends Logger {
 
         given()
                 .contentType(ContentType.JSON)
-                .queryParams("username", username)
-                .queryParams("password", password)
+                .queryParams(queryParams)
                 .when()
                 .get("https://reqres.in/api/login")
                 .then()
