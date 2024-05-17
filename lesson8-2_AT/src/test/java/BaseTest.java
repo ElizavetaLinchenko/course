@@ -32,4 +32,8 @@ public class BaseTest {
     void closeDriver() {
         driver.close();
     }
+
+    void checklocation(String location) {
+        System.out.println("Location: " + location);
+    }
 }

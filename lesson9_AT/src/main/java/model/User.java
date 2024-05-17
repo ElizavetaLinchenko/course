@@ -1,10 +1,14 @@
 package model;
 
-public class User {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class User implements Comparable<User>{
     private int id;
     private String email;
-    private String first_name;
-    private String last_name;
+    @JsonProperty("first_name")
+    private String firstName;
+    @JsonProperty("last_name")
+    private String lastName;
     private String avatar;
 
     public int getId() {
@@ -24,19 +28,19 @@ public class User {
     }
 
     public String getFirst_name() {
-        return first_name;
+        return firstName;
     }
 
     public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+        this.firstName = first_name;
     }
 
     public String getLast_name() {
-        return last_name;
+        return lastName;
     }
 
     public void setLast_name(String last_name) {
-        this.last_name = last_name;
+        this.lastName = last_name;
     }
 
     public String getAvatar() {
@@ -45,5 +49,10 @@ public class User {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    @Override
+    public int compareTo(User other) {
+        return Integer.compare(this.id, other.id);
     }
 }

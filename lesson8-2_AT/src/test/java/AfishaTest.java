@@ -7,6 +7,7 @@ import page.MainPage;
 import java.util.stream.Stream;
 
 public class AfishaTest extends BaseTest {
+
     public static Stream<Arguments> getAfishaRazvlecheniya() {
         return Stream.of(
                 Arguments.of("Мюзикл", "Мюзикл в Минске"),
@@ -19,6 +20,7 @@ public class AfishaTest extends BaseTest {
     @MethodSource("getAfishaRazvlecheniya")
     public void testingAfishaRazvlecheniya(String btn, String value) {
         String location = System.getProperty("location");
+        checklocation(location);
         String textAssertion = new MainPage(getDriver())
                 .navigateTo("https://www.relax.by/")
                 .clickAfishaIKino()

@@ -58,4 +58,9 @@ public class Pet {
     public String getStatus() {
         return status;
     }
+
+    public Pet(String name, String status) {
+        this.name = name;
+        this.status = status;
+    }
 }

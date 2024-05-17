@@ -12,11 +12,6 @@ public class CompaniiPage {
     private SelenideElement nazvanieField = $x("//input[contains(@placeholder, 'Название')]");
     private SelenideElement table = $x("//tbody[contains(@aria-relevant, 'all')]");
 
-    /*public CompaniiPage setValue(String name) {
-        nazvanieField.setValue(name);
-        return this;
-     }*/
-
     public List<Integer> getTableDataAfterSearch(String searchQuery, String name) {
         Integer index = null;
         List<String> otherCompany = new ArrayList<>();
@@ -46,7 +41,12 @@ public class CompaniiPage {
                 }
             });
             return countWorkerOtherCompany;
+        } else {
+            throw new RuntimeException("Company was not found");
         }
-        return new ArrayList<>();
+    }
+
+    public boolean isCompanyDisplayed(String name) {
+        return $x(String.format("//a[contains(text(), '%s')]", name)).isDisplayed();
     }
 }

@@ -5,9 +5,11 @@ import page.MainPage;
 import java.util.List;
 
 public class ImgFormatTest extends BaseTest {
+
     @Test
     void checkImgExtension() {
         String location = System.getProperty("location");
+        checklocation(location);
         List<String> styleList = new MainPage(getDriver())
                 .navigateTo("https://www.relax.by/")
                 .getFotoOtchetyImg();

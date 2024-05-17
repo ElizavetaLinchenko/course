@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FullOuterJoinTest {
+
     @Test
     void fullOuterTest() throws ClassNotFoundException, SQLException {
         Class.forName("net.sourceforge.jtds.jdbc.Driver");
