@@ -3,6 +3,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import model.User;
+import model.UserResponse;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,8 @@ public class UserApiTest extends Logger {
                 .get("https://reqres.in/api/users?page=2");
         Assertions.assertEquals(HttpStatus.SC_OK, response.getStatusCode());
 
-        List<User> users = response.jsonPath().getList("data", User.class);
+        UserResponse userResponse = response.as(UserResponse.class);
+        List<User> users = userResponse.getUser();
 
         List<String> emailList = users.stream()
                 .map(User::getEmail)

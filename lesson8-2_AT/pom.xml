@@ -10,7 +10,7 @@
     <artifactId>lesson8-2_AT</artifactId>
 
     <properties>
-        <location>${location}</location>
+        <location></location>
     </properties>
 
     <profiles>

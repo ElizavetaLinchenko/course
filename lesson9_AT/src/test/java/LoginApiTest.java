@@ -29,8 +29,8 @@ public class LoginApiTest extends Logger {
 
         given()
                 .contentType(ContentType.JSON)
-                .queryParam("username", username)
-                .queryParam("password", password)
+                .queryParams("username", username)
+                .queryParams("password", password)
                 .when()
                 .get("https://reqres.in/api/login")
                 .then()
